@@ -1,5 +1,8 @@
+Set up for [nix](https://nixos.org/) and [direnv](https://direnv.net/).
+
+See `shell.nix` and `.envrc` for dependencies if you're not using those.
+
 ```
-nix-shell # or install nodejs 18.x
-npm install
-npx elm reactor # and navigate to src/Main.elm
+# run build and watch for changes:
+make # and open index.html
 ```

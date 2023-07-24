@@ -1,10 +1,11 @@
 module Main exposing (main)
 
 import Browser
-import Html as H exposing (Html)
+import Element as E
+import Html exposing (Html)
 
 
-main : Program () Model msg
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
@@ -14,25 +15,48 @@ main =
         }
 
 
+
+-- MODEL
+
+
 type alias Model =
-    Int
+    {}
 
 
-init : () -> ( Model, Cmd msg )
+init : () -> ( Model, Cmd Msg )
 init _ =
-    ( 1, Cmd.none )
+    ( {}, Cmd.none )
 
 
-update : msg -> Model -> ( Model, Cmd msg )
-update _ model =
-    ( model, Cmd.none )
+
+-- UPDATE
 
 
-view : Model -> Html msg
-view _ =
-    H.text "You are cool."
+type Msg
+    = NoOp
 
 
-subscriptions : Model -> Sub msg
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        NoOp ->
+            ( model, Cmd.none )
+
+
+
+-- VIEW
+
+
+view : Model -> Html Msg
+view model =
+    E.layout [ E.padding 20 ] <|
+        E.text "Hello!"
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
 subscriptions _ =
     Sub.none
